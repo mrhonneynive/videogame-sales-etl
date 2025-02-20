@@ -16,7 +16,7 @@ const csvFilePath = process.env.CSV_PATH;
 
 async function processCSV() {
   const results = [];
-  fs.createReadStream(path.resolve(csvFilePath))
+  fs.createReadStream(csvFilePath)
     .pipe(csv())
     .on("data", (data) => results.push(data))
     .on("end", async () => {
