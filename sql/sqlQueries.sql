@@ -29,3 +29,18 @@ AND games.genre IS NOT NULL
 AND games.genre != ''
 GROUP BY games.genre
 ORDER BY avg_na_sales DESC;
+
+-- games that sold above the average in their region
+WITH avg_sales AS (
+  SELECT region, AVG(units_sold) AS avg_units
+  FROM sales
+  GROUP BY region
+)
+SELECT games.name, sales.region, sales.units_sold
+FROM games
+JOIN sales ON games.game_id = sales.game_id
+JOIN avg_sales a ON sales.region = a.region
+WHERE sales.units_sold > a.avg_units
+AND sales.units_sold > 10
+ORDER BY sales.region, sales.units_sold DESC;
+
