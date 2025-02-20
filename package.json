@@ -1,0 +1,20 @@
+{
+  "name": "videogame-sales-etl",
+  "version": "1.0.0",
+  "description": "A PostgreSQL and Node.js based ETL project for analyzing video game sales data using SQL queries.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrhonneynive/videogame-sales-etl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrhonneynive/videogame-sales-etl/issues"
+  },
+  "homepage": "https://github.com/mrhonneynive/videogame-sales-etl#readme"
+}
