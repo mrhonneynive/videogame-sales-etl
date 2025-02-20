@@ -39,8 +39,8 @@ WITH avg_sales AS (
 SELECT games.name, sales.region, sales.units_sold
 FROM games
 JOIN sales ON games.game_id = sales.game_id
-JOIN avg_sales a ON sales.region = a.region
-WHERE sales.units_sold > a.avg_units
+JOIN avg_sales ON sales.region = avg_sales.region
+WHERE sales.units_sold > avg_sales.avg_units
 AND sales.units_sold > 10
 ORDER BY sales.region, sales.units_sold DESC;
 
