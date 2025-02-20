@@ -22,17 +22,22 @@ async function processCSV() {
     .on("end", async () => {
       console.log(`csv file loaded with ${results.length} records`);
 
-      for (const result of results) {
-        console.log("processing record", result);
-      }
+      for (const record of results) {
+        console.log("processing record", record);
 
-      // try {
-      //   const client = await pool.connect();
-      //   console.log("connected to db");
-      //   client.release(); // for testing purposes
-      // } catch (e) {
-      //   console.error(e);
-      // }
+        try {
+          const client = await pool.connect();
+          await client.query("BEGIN");
+          console.log("transaction started for:", record["Name"]);
+
+          // insert record into database
+
+          await client.query("COMMIT");
+          console.log("transaction committed for:", record["Name"]);
+        } catch (e) {
+          console.error("error processing row", e);
+        }
+      }
     });
 }
 
