@@ -43,32 +43,31 @@ A PostgreSQL and Node.js based ETL project for analyzing video game sales data u
 ### Top 10 Best Selling Games Globally
 
 ```sql
--- Get the top 10 best-selling games based on global sales
 SELECT games.name, SUM(sales.units_sold) AS total_sales
-FROM games
-JOIN sales ON games.game_id = sales.game_id
-WHERE sales.region = 'Global'
+FROM games, sales
+WHERE games.game_id = sales.game_id
+AND sales.region = 'Global'
 GROUP BY games.name
 ORDER BY total_sales DESC
 LIMIT 10;
 ```
 
-### Average Global Sales by Genre
+### Average Global Sales by Genre in North America
 
 ```sql
--- Calculate average global sales for each genre
-SELECT games.genre, AVG(sales.units_sold) AS avg_global_sales
+SELECT games.genre, AVG(sales.units_sold) AS avg_na_sales
 FROM games
 JOIN sales ON games.game_id = sales.game_id
-WHERE sales.region = 'Global'
+WHERE sales.region = 'NA'
+AND games.genre IS NOT NULL
+AND games.genre != ''
 GROUP BY games.genre
-ORDER BY avg_global_sales DESC;
+ORDER BY avg_na_sales DESC;
 ```
 
 ### Top-Selling Game per Region (Using CTE)
 
 ```sql
--- Find the top-selling game in each region using a CTE and window function
 WITH avg_sales AS (
   SELECT region, AVG(units_sold) AS avg_units
   FROM sales
