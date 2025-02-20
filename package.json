@@ -10,11 +10,23 @@
     "type": "git",
     "url": "git+https://github.com/mrhonneynive/videogame-sales-etl.git"
   },
-  "keywords": ["ETL", "SQL", "Node.js", "PostgreSQL", "video game sales", "data analytics"],
+  "keywords": [
+    "ETL",
+    "SQL",
+    "Node.js",
+    "PostgreSQL",
+    "video game sales",
+    "data analytics"
+  ],
   "author": "Hasan Hüseyin Balbıçak",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mrhonneynive/videogame-sales-etl/issues"
   },
-  "homepage": "https://github.com/mrhonneynive/videogame-sales-etl#readme"
+  "homepage": "https://github.com/mrhonneynive/videogame-sales-etl#readme",
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.4.7",
+    "pg": "^8.13.3"
+  }
 }
