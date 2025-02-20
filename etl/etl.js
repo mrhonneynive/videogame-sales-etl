@@ -16,19 +16,23 @@ const csvFilePath = process.env.CSV_PATH;
 
 async function processCSV() {
   const results = [];
-  fs.createReadStream(csvFilePath)
+  fs.createReadStream(path.resolve(csvFilePath))
     .pipe(csv())
     .on("data", (data) => results.push(data))
     .on("end", async () => {
       console.log(`csv file loaded with ${results.length} records`);
 
-      try {
-        const client = await pool.connect();
-        console.log("connected to db");
-        client.release(); // for testing purposes
-      } catch (e) {
-        console.error(e);
+      for (const result of results) {
+        console.log("processing record", result);
       }
+
+      // try {
+      //   const client = await pool.connect();
+      //   console.log("connected to db");
+      //   client.release(); // for testing purposes
+      // } catch (e) {
+      //   console.error(e);
+      // }
     });
 }
 
