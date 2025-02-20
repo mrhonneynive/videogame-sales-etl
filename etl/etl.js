@@ -13,3 +13,15 @@ const pool = new Pool({
 });
 
 const csvFilePath = process.env.CSV_PATH;
+
+async function processCSV() {
+  const results = [];
+  fs.createReadStream(csvFilePath)
+    .pipe(csv())
+    .on("data", (data) => results.push(data))
+    .on("end", async () => {
+      console.log(`csv file loaded with ${results.length} records`);
+    });
+}
+
+processCSV();
