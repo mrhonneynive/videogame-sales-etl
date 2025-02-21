@@ -20,6 +20,12 @@ A PostgreSQL and Node.js based ETL project for analyzing video game sales data u
 - [x] Created the .env file with required environment variables
 - [x] `psql -U myuser -d videogame_sales -f sql/createTables.sql`
 
+## Entity-Relationship (ER) Diagram
+
+Below is the ER diagram representing the database schema for this project:
+
+![ER Diagram](docs/ERDiagramImage.png)
+
 ## Database Schema
 
 ### games Table
