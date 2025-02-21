@@ -30,7 +30,7 @@ AND games.genre != ''
 GROUP BY games.genre
 ORDER BY avg_na_sales DESC;
 
--- games that sold above the average in their region
+-- games that are sold above the average in their region
 WITH avg_sales AS (
   SELECT region, AVG(units_sold) AS avg_units
   FROM sales
